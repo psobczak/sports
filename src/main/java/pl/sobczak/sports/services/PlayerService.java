@@ -1,12 +1,14 @@
 package pl.sobczak.sports.services;
 
-import pl.sobczak.sports.models.Player;
+import pl.sobczak.sports.dto.PlayerDto;
 
 import java.util.List;
 
 public interface PlayerService {
 
-    Player findPlayerByFirstName(String firstName, String lastName);
+    PlayerDto findPlayerByFirstName(String firstName, String lastName);
 
-    List<Player> findAllPlayers();
+    List<PlayerDto> findAllPlayers();
+
+    PlayerDto savePlayer(PlayerDto player);
 }

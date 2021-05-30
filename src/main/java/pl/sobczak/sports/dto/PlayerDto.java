@@ -1,29 +1,29 @@
-package pl.sobczak.sports.models;
+package pl.sobczak.sports.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
-@javax.persistence.Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Player implements Entity {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class PlayerDto implements Dto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
     private LocalDate birthday;
     private String team;
     private String country;
-    @Enumerated(EnumType.STRING)
-    private PlayerPosition position;
+    private String position;
+
 
 }

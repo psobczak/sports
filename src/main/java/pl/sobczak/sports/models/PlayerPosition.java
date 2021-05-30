@@ -1,5 +1,7 @@
 package pl.sobczak.sports.models;
 
+import java.util.Arrays;
+
 public enum PlayerPosition {
 
     GOALKEEPER,
@@ -17,4 +19,11 @@ public enum PlayerPosition {
     FORWARD_CENTRE_FORWARD,
     FORWARD_SECOND_STRIKER,
     FORWARD_WINGER;
+
+    public static PlayerPosition getPlayerPositionFromString(String playerPosition) {
+        return Arrays.stream(values())
+                .filter(position -> position.name().equals(playerPosition))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Position " + playerPosition + " was not found"));
+    }
 }
